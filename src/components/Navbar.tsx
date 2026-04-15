@@ -56,7 +56,7 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ background: 'var(--color-bg-surface)', borderColor: 'var(--color-border)' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link to="/dashboard" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <Shield size={20} style={{ color: 'var(--color-primary)' }} />
             <span className="font-bold text-lg" style={{ color: 'var(--color-text)' }}>WEIR</span>
           </Link>
@@ -133,7 +133,7 @@ export default function Navbar() {
       >
         {/* Drawer header */}
         <div className="flex items-center justify-between px-5 h-16 border-b flex-shrink-0" style={{ borderColor: 'var(--color-border)' }}>
-          <Link to="/dashboard" className="flex items-center gap-2" onClick={() => setDrawerOpen(false)}>
+          <Link to="/" className="flex items-center gap-2" onClick={() => setDrawerOpen(false)}>
             <Shield size={18} style={{ color: 'var(--color-primary)' }} />
             <span className="font-bold text-base" style={{ color: 'var(--color-text)' }}>WEIR</span>
           </Link>
