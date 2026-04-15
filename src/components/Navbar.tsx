@@ -56,7 +56,7 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ background: 'var(--color-bg-surface)', borderColor: 'var(--color-border)' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/dashboard" className="flex items-center gap-2">
             <Shield size={20} style={{ color: 'var(--color-primary)' }} />
             <span className="font-bold text-lg" style={{ color: 'var(--color-text)' }}>WEIR</span>
           </Link>
@@ -87,7 +87,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Hamburger button — mobile only */}
+          {/* Hamburger button — mobile only, below md */}
           <button
             className="md:hidden p-2 rounded-md transition-colors"
             style={{ color: 'var(--color-text)' }}
@@ -116,7 +116,7 @@ export default function Navbar() {
         onClick={() => setDrawerOpen(false)}
       />
 
-      {/* Slide-in drawer — mobile only */}
+      {/* Slide-in drawer — mobile only, right-side */}
       <div
         ref={drawerRef}
         className="fixed top-0 right-0 h-full w-72 z-[70] md:hidden flex flex-col"
@@ -133,7 +133,7 @@ export default function Navbar() {
       >
         {/* Drawer header */}
         <div className="flex items-center justify-between px-5 h-16 border-b flex-shrink-0" style={{ borderColor: 'var(--color-border)' }}>
-          <Link to="/" className="flex items-center gap-2" onClick={() => setDrawerOpen(false)}>
+          <Link to="/dashboard" className="flex items-center gap-2" onClick={() => setDrawerOpen(false)}>
             <Shield size={18} style={{ color: 'var(--color-primary)' }} />
             <span className="font-bold text-base" style={{ color: 'var(--color-text)' }}>WEIR</span>
           </Link>
@@ -156,7 +156,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Drawer nav links */}
+        {/* Drawer nav links — Ink color base, Flame active state */}
         <nav className="flex-1 px-4 py-5 flex flex-col gap-1 overflow-y-auto">
           {navLinks.map((l) => (
             <Link
@@ -165,8 +165,8 @@ export default function Navbar() {
               onClick={() => setDrawerOpen(false)}
               className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors"
               style={{
-                color: isActive(l.to) ? 'var(--color-primary)' : 'var(--color-text)',
-                background: isActive(l.to) ? 'rgba(29,78,216,0.08)' : 'transparent',
+                color: isActive(l.to) ? 'var(--color-primary, #f97316)' : 'var(--color-text, #374151)',
+                background: isActive(l.to) ? 'rgba(249,115,22,0.08)' : 'transparent',
               }}
               onMouseEnter={(e) => {
                 if (!isActive(l.to)) {
@@ -179,27 +179,27 @@ export default function Navbar() {
                 }
               }}
             >
-              <span style={{ color: isActive(l.to) ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}>
+              <span style={{ color: isActive(l.to) ? 'var(--color-primary, #f97316)' : 'var(--color-text-secondary, #6b7280)' }}>
                 {l.icon}
               </span>
               {l.label}
               {isActive(l.to) && (
                 <span
                   className="ml-auto w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ background: 'var(--color-primary)' }}
+                  style={{ background: 'var(--color-primary, #f97316)' }}
                 />
               )}
             </Link>
           ))}
         </nav>
 
-        {/* Drawer footer */}
+        {/* Drawer footer — logout */}
         {authed && (
           <div className="px-4 py-4 border-t flex-shrink-0" style={{ borderColor: 'var(--color-border)' }}>
             <button
               onClick={() => { setDrawerOpen(false); logout() }}
               className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium w-full text-left transition-colors"
-              style={{ color: 'var(--color-text-secondary)' }}
+              style={{ color: 'var(--color-text-secondary, #6b7280)' }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.background = 'var(--color-border)'
               }}
@@ -207,7 +207,7 @@ export default function Navbar() {
                 (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
               }}
             >
-              <LogOut size={15} style={{ color: 'var(--color-text-secondary)' }} />
+              <LogOut size={15} style={{ color: 'var(--color-text-secondary, #6b7280)' }} />
               Log out
             </button>
           </div>
